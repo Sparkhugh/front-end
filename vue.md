@@ -235,12 +235,14 @@ selcet将value作为prop,将change作为事件;
 <my-component v-once:comment="msg"></my-component>
 ```
 --------------------------------------------------
-3. vue生命周期钩子函数		11个,常用8个
-* new Vue()->实例初始化----->实例创建完成,未挂载---->实例挂载之前---->实例被挂载mounted------------>实例销毁之前---->实例销毁destroyed
+3.vue生命周期钩子函数		11个,常用8个
+```
+new Vue()->实例初始化----->实例创建完成,未挂载---->实例挂载之前---->实例被挂载mounted------------>实例销毁之前---->实例销毁destroyed
 												|						|									|						|				|数据更新								|								|
 									beforeCreate		created				beforeMount		mounted		beforeUpdate					beforeDestroyed		destroyed
 																																					|虚拟dom重新渲染				(实例仍可用)
 																																				updated
+```
 ```js
 beforeCreate:function(){
 	console.log('beforeCreate')
@@ -282,7 +284,7 @@ errorCaptured:function(){ //不常用 }
 * 调接口、创建swiper组件等操作在 mounted钩子函数中进行;
 * 需要完整的dom结构才能做初始化渲染的第三方ui库,其业务逻辑都要放在 mounted钩子函数中进行;
 --------------------------------------------------
-4. 响应式原理
+4.响应式原理
 * 利用es5中 Object.defineProperty() 把对象的定义转为getter/setter方式
 	页面数据发生变化时,依赖项的setter操作触发,会通知监听器watcher,重新渲染页面;
 * 前端框架有两种方式侦测数据变化,`push`和`pull`,vue响应式系统是`push`+`pull`,react是`pull`方式
@@ -309,7 +311,7 @@ function watch(value){
 }
 ```
 --------------------------------------------------
-5. 虚拟DOM		性能优化
+5.虚拟DOM		性能优化
 * MVC		model数据  view视图  control控制器
 * MVVM	model数据  view视图  VM视图模型 即虚拟DOM
 * 虚拟DOM 
@@ -331,7 +333,7 @@ var ele={
 	Vue实例中数据发生变化,vue会拷贝一份虚拟DOM,通过diff运算,找出变化前和变化后虚拟DOM的最小差异,并把最小差异渲染到真实DOM上;
 	MVVM框架中 基于虚拟DOM的diff运算减少了DOM的频繁操作,有利于性能优化,适合数据化的产品应用开发;
 --------------------------------------------------
-6. 组件
+6.组件
 * 组件是可复用的Vue实例  与new Vue一样接收相同的选项,data methods computed 生命周期钩子等;
 ```js
 // 全局注册			组件注册要放在根实例之前
@@ -478,7 +480,7 @@ var app=new Vue({
 })
 ```
 --------------------------------------------------
-7. 混入 mixin 可复用性
+7.混入 mixin 可复用性
 * 全局混入 使用全局混入会影响每一个单独创建的vue实例,慎用 推荐作为插件发布
 * 组件与混入对象有同名选项时,组件优先级更高
 ```js
@@ -506,7 +508,7 @@ var app1=new Vue({
 })
 ```
 --------------------------------------------------
-8. 过滤器 filter
+8.过滤器 filter
 * 只可用于文本插值花括号和v-bind指令中
 ```html
 <h1>{{money | rmb}}</h1>
@@ -529,7 +531,7 @@ var app=new Vue({
 })
 ```
 --------------------------------------------------
-9. 自定义指令 directive
+9.自定义指令 directive
 ```html
 <input v-focus>
 ```
@@ -557,7 +559,7 @@ new Vue({
 })
 ```
 --------------------------------------------------
-10. 事件总线 bus
+10.事件总线 bus
 * 订阅-发布模式
 * 通过`bus.$emit()`和`bus.$on()`方法,实现子组件之间的直接通信
 ```js
@@ -597,7 +599,7 @@ var app=new Vue({
 })
 ```
 --------------------------------------------------
-11. 过渡&动画 <transition>
+11.过渡&动画 <transition>
 * vue过渡有6个状态, `v-enter` `v-enter-active` `v-enter-to` `v-leave` `v-leave-active` `v-leave-to`
 ```css
 .fade-enter,.fade-leave-to{
@@ -642,7 +644,7 @@ var app=new Vue({
 ### 工程架构
 
 # Vue脚手架搭建项目 Vue-CLI
-1. 安装
+1.安装
 ```
 npm install -g @vue/cli
 # or
@@ -653,14 +655,14 @@ yarn global add @vue/cli
 vue --version
 ```
 
-2. 创建一个项目
+2.创建一个项目
 ```
 vue create vue-project
 # or
 vue ui
 ```
 
-3. 启动项目
+3.启动项目
 ```
 cd vue-project
 npm run serve
@@ -668,7 +670,7 @@ npm run serve
 npm start (修改package.json文件中scripts命令 "start":"npm run serve")
 ```
 
-4. 项目执行ESLint检测
+4.项目执行ESLint检测
 ```
 npm run lint
 ```
@@ -687,7 +689,7 @@ npm run lint
 }
 ```
 
-5. 项目打包上线		(项目部署阶段)
+5.项目打包上线		(项目部署阶段)
 ```
 npm run build
 ```
@@ -699,7 +701,7 @@ npm run build
 * /public 静态资源服务器
 
 
-6. 项目结构
+6.项目结构
 6.1  /src开发目录
 * 用`@`代表`/src`根目录,如'@/components/Home.vue'
 * `src/main.js` 程序的入口文件
@@ -738,7 +740,7 @@ npm run build
 --------------------------------------------------
 ### 项目架构
 
-7. css相关 预处理器(Sass/Less/Stylus)
+7.css相关 预处理器(Sass/Less/Stylus)
 * 使用sass
 * [sass官网](https://www.sass.hk/)
 * 安装
@@ -771,7 +773,7 @@ npm install node-sass --sass_binary_site=https://npm.taobao.org/mirrors/node-sas
 [node-sass 安装失败报错的原因及解决办法(整理)](https://www.cnblogs.com/gitnull/p/10188030.html)
 
 --------------------------------------------------
-8. 路由 Vue-Router
+8.路由 Vue-Router
 * 安装
 ```
 npm install vue-router -S
@@ -1024,7 +1026,7 @@ localStorage.removeItem('isLogin')
 this.$router.replace('/login')
 ```
 --------------------------------------------------
-9. 状态管理 Vuex  开发中大型单页应用
+9.状态管理 Vuex  开发中大型单页应用
 * 采用集中式存储管理应用的所有组件的状态,并以相应的规则保证状态以一种可预测的方式发生变化;
 * 状态管理包含三个部分: state view actions
 	state:驱动应用的数据源;
@@ -1194,7 +1196,7 @@ export default{
 }
 ```
 --------------------------------------------------
-10. vue.config.js 配置参考文件
+10.vue.config.js 配置参考文件
 * 与 package.json文件同级,需要手动创建
 * 改端口号,代理需要用vue.config.js(解决跨域)
 * 使用代理后需要重启项目
@@ -1214,7 +1216,7 @@ module.exports={
 }
 ```
 --------------------------------------------------
-11. Devtools工具		用于调试vue程序
+11.Devtools工具		用于调试vue程序
 * 提交mutation使得state改变,都会记录在devtools里
 * 安装
 ```
@@ -1226,7 +1228,7 @@ npm run build / yarn run build
 * 设置好后需重启浏览器,即可在控制台调试vue
 
 --------------------------------------------------
-12. axios工具 调后端接口	基于promise对象
+12.axios工具 调后端接口	基于promise对象
 * 安装
 ```
 npm install axios -S
@@ -1310,7 +1312,7 @@ axios({
 })
 ```
 --------------------------------------------------
-13. 使用Element ui组件库
+13.使用Element ui组件库
 * 安装
 ```
 npm i element-ui -S
@@ -1330,7 +1332,7 @@ new Vue({
 });
 ```
 --------------------------------------------------
-14. Font-Awesome	字体图标库
+14.Font-Awesome	字体图标库
 [Font-Awesome](http://fontawesome.dashgame.com/)
 [BootstrapCDN](https://www.bootcdn.cn/) 提供开源CDN加速服务的网站
 
@@ -1346,7 +1348,7 @@ new Vue({
 <i class="fa fa-camera-retro"></i> fa-camera-retro(图标名)
 ```
 --------------------------------------------------
-15. momentjs	js日期处理类库
+15.momentjs	js日期处理类库
 [momentjs](http://momentjs.cn/)
 * 安装
 ```
@@ -1362,7 +1364,7 @@ moment().format('YYYY-MM-DD HH:mm:ss')	//获取当前时间 2020-02-02 02:02:02
 
 # vue实现移动端webapp
 
-1. 移动端用rem布局
+1.移动端用rem布局
 * rem: html根元素的font-size
 * 设备像素比 DPR(devicePixelRatio) dpr=1/2/3
 * dpr=设备物理像素 / 设备独立像素(css代码像素)
@@ -1395,17 +1397,17 @@ window.addEventListener('resize', function() {
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
 ```
 --------------------------------------------------
-2. touch事件		移动端特有的事件
+2.touch事件		移动端特有的事件
 * Click事件在移动端，会有300毫秒延迟，用于区分移动设备上的单击、双击事件
 * 给网页指定WebApp meta元数据后，可以降低click事件延迟时间
 * Touch事件由`touchstart``touchmove``touchend`组件，仅在移动端Web中被支持，在PC Web中不支持
 --------------------------------------------------
-3. 移动端底部导航TabBar组件
+3.移动端底部导航TabBar组件
 * 在`Home` `Find` `User`等外页组件中引入,内页组件中不引入
 
 * 自测时可以用`/public`中的假数据测试接口 `/public/db/`
 --------------------------------------------------
-4. vant (vue移动端ui组件库)
+4.vant (vue移动端ui组件库)
 * 安装
 ```
 npm i vant -S
