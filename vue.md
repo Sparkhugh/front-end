@@ -1364,7 +1364,8 @@ moment().format('YYYY-MM-DD HH:mm:ss')	//获取当前时间 2020-02-02 02:02:02
 1. 移动端用rem布局
 * rem: html根元素的font-size
 * 设备像素比 DPR(devicePixelRatio) dpr=1/2/3
-* dpr=屏幕像素/设备物理像素
+* dpr=设备物理像素 / 设备独立像素(css代码像素)
+* 设备物理像素=屏幕能显示的实际像素,设备独立像素=屏幕可视区域宽度
 * 使用`window.devicePixelRatio`可以动态地获取到硬件设备的dpr
 
 * 封装rem函数
