@@ -1033,14 +1033,15 @@ this.$router.replace('/login')
 * 应用核心为store(仓库),相当于一个容器,store包含着应用的state(状态)
 * vuex响应式状态存储,不能直接改变store中的状态
 * 改变store状态只能通过显式提交mutation的方式修改
-* vuex核心技术:			
-*  						Backend(后端API)
+* vuex核心技术:
+```
+							Backend(后端API)
 											|
 			 _____________Actions_____________
 			|		dispatch							commit	|
 	Vue Components										Mutations <-->Devtools
 			|___render_____State____mutate____|
-
+```
 * 完成前端静态页面布局后,先用假数据自测,再基于接口文档进行前后端接口联调
 * 自测时可以用`/public`中的假数据测试接口,自行创建`/public/db/`
 * 前后端接口联调:前端调取数据激活并在页面动态显示的过程
